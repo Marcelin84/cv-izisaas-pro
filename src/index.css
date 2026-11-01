@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Prevent iOS tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ensure inputs have at least 16px font-size on mobile touch devices to eliminate iOS auto-zoom */
+  @media screen and (max-width: 640px) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
+}
+
+/* Micro-interactions & animations */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-magnetic:hover {
+    transform: scale(1.03);
+  }
+
+  .link-lift:hover {
+    transform: translateY(-1px);
+  }
+
+  .card-hover:hover {
+    transform: scale(1.01);
+  }
+
+  .card-glow:hover {
+    box-shadow: 0 15px 50px -10px rgba(123, 97, 255, 0.35);
+  }
+}
+
+.btn-magnetic:active {
+  transform: scale(0.97);
+}
+
+.link-lift {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s ease;
+}
+
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Smooth gradients and glow */
+.text-glow {
+  text-shadow: 0 0 30px rgba(123, 97, 255, 0.5), 0 0 60px rgba(123, 97, 255, 0.25);
+}
+
+.card-glow {
+  box-shadow: 0 10px 40px -15px rgba(123, 97, 255, 0.2);
+}
+
+/* Print optimizations */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+}
